@@ -1,6 +1,6 @@
 <template>
     <div>
-      <BaseHeader /> 
+      <BaseHeader :user="user" @userChanged="$emit('userChanged', $event)"/> 
       <main>
         <slot></slot> 
       </main>
@@ -14,6 +14,12 @@
   
   export default {
     name: 'BaseLayout',
+    props: {
+      user: {
+        type: Object,
+        default: null,
+      },
+    },
     components: {
       BaseHeader,
       BaseFooter,

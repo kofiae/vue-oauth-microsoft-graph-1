@@ -1,7 +1,7 @@
 <template>
   <div>
-    <BaseLayout>
-    <HomePage />
+    <BaseLayout :user="user" @userChanged="handleUserChanged">
+    <HomePage :user="user"/>
     </BaseLayout>
   </div>
 </template>
@@ -12,10 +12,20 @@ import BaseLayout from './components/BaseLayout.vue';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      user: null,
+    };
+  },
   components: {
     HomePage,
     BaseLayout
-  }
+  },
+  methods: {
+        handleUserChanged(user) {
+            this.user = user;
+        },
+    },
 }
 </script>
 

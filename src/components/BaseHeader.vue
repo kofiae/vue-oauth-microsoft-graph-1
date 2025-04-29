@@ -6,7 +6,7 @@
         </div>
         <div class="header-right">
             <font-awesome-icon icon="fa-solid fa-user" class="user-icon" />
-            <SignInButton />
+            <SignInButton :user="user" @userChanged="$emit('userChanged', $event)"/>
         </div>
     </div>
 </template>
@@ -16,6 +16,12 @@ import SignInButton from './SigninButton.vue';
 
 export default {
     name: 'BaseHeader',
+    props: {
+        user: {
+            type: Object,
+            default: null,
+        },
+    },
     components: {
         SignInButton
     },

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <AsyncButton @click="signIn" class="button" v-if="!user">
+        <AsyncButton @click="signIn" v-if="!user">
             Sign In     
         </AsyncButton>
         
@@ -12,9 +12,13 @@
 
 <script>
 import { signInAndGetUser } from '../lib/microsoFGraph.js';
+import AsyncButton from './AsyncButton.vue';
 
 export default {
     name: 'SignInButton',
+    components: {
+        AsyncButton
+    },
     data() {
         return {
             user: null,
@@ -25,21 +29,17 @@ export default {
             try {
                 const user = await signInAndGetUser();
                 this.user = user;
+                this.$emit('userChanged', user);
             } catch (error) {
                 console.error('Sign-in failed:', error);
             }
-        },
-    },
-    watch: {
-        user(newValue) {
-            console.log('User data updated:', newValue);
         },
     },
 };
 </script>
 
 <style scoped>
-.button {
+.base-button {
     padding: 10px 10px;
     font-size: 14px;
     margin-left: 10px;
@@ -48,8 +48,9 @@ export default {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
 }
-.button:hover {
+.base-button:hover {
     background-color: #45a049;
 }
 

@@ -1,6 +1,9 @@
 <template>
     <div>
-        <button @click="signIn">Sign In</button>
+        <AsyncButton @click="asyncOperation" class="button">
+            Sign In     
+        </AsyncButton>
+        
         <div v-if="user">
             <p>Welcome, {{ user.name }}</p>
             <p>Email: {{ user.username }}</p>
@@ -37,8 +40,9 @@ export default {
 </script>
 
 <style scoped>
-button {
-    padding: 10px 20px;
+.button {
+    padding: 10px 10px;
+    font-size: 14px;
     margin-left: 10px;
     background-color: #4CAF50;
     color: white;
@@ -46,7 +50,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
-button:hover {
+.button:hover {
     background-color: #45a049;
 }
 </style>

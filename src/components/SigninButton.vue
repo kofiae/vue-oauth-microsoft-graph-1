@@ -1,12 +1,11 @@
 <template>
     <div>
-        <AsyncButton @click="asyncOperation" class="button">
+        <AsyncButton @click="signIn" class="button" v-if="!user">
             Sign In     
         </AsyncButton>
         
-        <div v-if="user">
-            <p>Welcome, {{ user.name }}</p>
-            <p>Email: {{ user.username }}</p>
+        <div v-if="user" class="user-info">
+            <p>{{ user.account.name }}</p>
         </div>
     </div>
 </template>
@@ -52,5 +51,11 @@ export default {
 }
 .button:hover {
     background-color: #45a049;
+}
+
+.user-info {
+    padding: 10px 10px;
+    margin-left: 10px;
+    font-size: 14px;
 }
 </style>

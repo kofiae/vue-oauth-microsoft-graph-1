@@ -24,7 +24,6 @@ import BaseButton from '../components/BaseButton.vue';
 import AsyncButton from '../components/AsyncButton.vue';
 
 export default {
-    // eslint-disable-next-line vue/multi-word-component-names
     name: 'HomePage',
     components: {
         BaseButton,

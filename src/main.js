@@ -19,7 +19,7 @@ import router from './router'
 library.add(faUser, faHouse)
 
 // User store
-const userStore = createStore({  state() {
+export const userStore = createStore({  state() {
     return {
       user: null
     }

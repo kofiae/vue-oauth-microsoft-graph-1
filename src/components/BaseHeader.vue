@@ -2,7 +2,11 @@
     <div class="header">
         <div class="header-left">
             <font-awesome-icon icon="fa-solid fa-house" class="home-icon" />
-            <span class="header-title">Home</span>
+            <RouterLink to="/" class="header-title">Home</RouterLink>
+            <RouterLink v-if="user" to="/conversations" class="header-title">
+                <font-awesome-icon icon="fa-solid fa-comments" />
+                <span>Conversations</span>
+            </RouterLink>
         </div>
         <div class="header-right">
             <font-awesome-icon icon="fa-solid fa-user" class="user-icon" />
@@ -18,6 +22,11 @@ export default {
     name: 'BaseHeader',
     components: {
         SignInButton
+    },
+    computed: {
+        user() {
+            return this.$store.state.user;
+        }
     },
 }
 </script>
@@ -51,10 +60,17 @@ export default {
     .header-title {
         font-size: 1.2rem;
         font-weight: bold;
+        margin-right: 20px;
+        color: white;
+        text-decoration: none;
     }
     .login-status {
         font-size: 1rem;
         margin-left: 10px;
+    }
+
+    .home-icon {
+        margin-right: 10px;
     }
 </style>
  

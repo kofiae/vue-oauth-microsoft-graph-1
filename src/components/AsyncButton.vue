@@ -4,12 +4,13 @@
         :color="color"
         @click.stop.prevent="handleClick"
     >
-
-    <font-awesome-icon v-if="isPending" :icon="['fas', 'circle-notch' ]" pulse/>
-    <font-awesome-icon v-else :icon="['fas', 'check' ]" />
-        <slot></slot>
+        <span style="display: inline-flex; align-items: center; gap: 0.5em;">
+            <font-awesome-icon v-if="isPending" :icon="['fas', 'circle-notch' ]" pulse/>
+            <slot></slot>
+        </span>
     </BaseButton>
 </template>
+
 
 <script>
 import BaseButton from './BaseButton.vue';

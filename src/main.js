@@ -10,18 +10,25 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faHouse, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faUser, faComment, faCircleNotch, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 /* import the router */
 import router from './router'
 
 /* add icons to the library */
-library.add(faUser, faHouse)
+library.add(faUser, faHouse, faComment, faCircleNotch, faCheck)
 
 // User store
 export const userStore = createStore({  state() {
-    return {
-      user: null
+  const user = localStorage.getItem('user')
+    if (user) {
+      return {
+        user: JSON.parse(user)
+      }
+    } else {
+      return {
+        user: null
+      }
     }
   },
   mutations: {

@@ -56,10 +56,9 @@ export default {
 </script>
 <style scoped>
     * {
-        margin: 12px;
-        padding: 40px;
         display:flex;
         flex-direction: column;
         align-items: center;
+        gap: 10px;
     }
 </style>

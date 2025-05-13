@@ -12,6 +12,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 /* import specific icons */
 import { faHouse, faUser } from '@fortawesome/free-solid-svg-icons'
 
+/* import the router */
+import router from './router'
+
 /* add icons to the library */
 library.add(faUser, faHouse)
 
@@ -31,4 +34,5 @@ const userStore = createStore({  state() {
 createApp(App)
   .component('font-awesome-icon', FontAwesomeIcon)
   .use(userStore)
+  .use(router)
   .mount('#app')

@@ -1,19 +1,19 @@
 <template>
   <div>
     <BaseLayout >
-    <HomePage />
+      <div class="container">
+        <router-view />
+      </div>
     </BaseLayout>
   </div>
 </template>
 
 <script>
-import HomePage from './pages/HomePage.vue';
 import BaseLayout from './components/BaseLayout.vue';
 
 export default {
   name: 'App',
   components: {
-    HomePage,
     BaseLayout
   },
 }
@@ -26,5 +26,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.container {
+    margin: 12px;
+    padding: 40px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 </style>

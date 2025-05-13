@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
+import { createStore } from 'vuex'
+
 import App from './App.vue'
 
 /* import the fontawesome core */
@@ -13,6 +15,20 @@ import { faHouse, faUser } from '@fortawesome/free-solid-svg-icons'
 /* add icons to the library */
 library.add(faUser, faHouse)
 
+// User store
+const userStore = createStore({  state() {
+    return {
+      user: null
+    }
+  },
+  mutations: {
+    setUser(state, user) {
+      state.user = user
+    }
+  }
+})
+
 createApp(App)
   .component('font-awesome-icon', FontAwesomeIcon)
+  .use(userStore)
   .mount('#app')

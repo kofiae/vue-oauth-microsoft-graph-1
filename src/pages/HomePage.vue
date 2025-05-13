@@ -1,7 +1,7 @@
 <template lang="">
     <div>
         <h1 v-if="!user">Welcome to the Homepage</h1>
-        <h1 v-else>Welcome, {{ user.account.name }}</h1>
+        <h1 v-else>Welcome, {{ user?.account?.name || 'Guest' }}</h1>
         <p>This is the homepage of our application.</p>
         <AsyncButton @click="asyncOperation">
             Async Button
@@ -26,15 +26,14 @@ import AsyncButton from '../components/AsyncButton.vue';
 
 export default {
     name: 'HomePage',
-    props: {
-        user: {
-            type: Object,
-            default: null,
-        },
-    },
     components: {
         BaseButton,
         AsyncButton,
+    },
+        computed: {
+        user() {
+            return this.$store.state.user;
+        }
     },
     data() {
         return {

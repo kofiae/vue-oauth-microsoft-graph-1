@@ -30,6 +30,5 @@ msalInstance.initialize();
 export async function signInAndGetUser () {
   const authResult = await msalInstance.loginPopup(requestedScopes)
   msalInstance.setActiveAccount(authResult.account)
-  console.log("User logged in: ", authResult.account)
   return authResult
 }

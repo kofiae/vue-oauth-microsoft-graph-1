@@ -19,17 +19,16 @@ export default {
     components: {
         AsyncButton
     },
-    data() {
-        return {
-            user: null,
-        };
+    computed: {
+        user() {
+            return this.$store.state.user;
+        }
     },
     methods: {
         async signIn() {
             try {
                 const user = await signInAndGetUser();
-                this.user = user;
-                this.$emit('userChanged', user);
+                this.$store.commit('setUser', user);
             } catch (error) {
                 console.error('Sign-in failed:', error);
             }
